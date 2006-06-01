@@ -1,0 +1,18 @@
+
+		CHANGES IN FLEDA VERSION 1.2-1
+
+NEW FEATURES
+
+	o	New nay method
+	o	New xyplot method for FLCohorts
+	
+
+USER-VISIBLE CHANGES
+
+    o   nay
+        - method to standardize FLQuant objects by the maximum
+
+BUG FIXES
+UTILITIES
+DOCUMENTATION
+DEPRECATED & DEFUNCT
