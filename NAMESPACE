@@ -33,5 +33,6 @@ exportMethods("bmass",
 	"bubbles", 
 	"z", 
 	"summary",
-	"t.test")
+	"t.test",
+	"catch")
 

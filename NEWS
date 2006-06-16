@@ -1,18 +1,20 @@
 
-		CHANGES IN FLEDA VERSION 1.2-1
+		CHANGES IN FLEDA VERSION 1.3-1
 
 NEW FEATURES
 
-	o	New nay method
-	o	New xyplot method for FLCohorts
-	
+	o	New catch method for FLIndex
 
 USER-VISIBLE CHANGES
 
-    o   nay
-        - method to standardize FLQuant objects by the maximum
+    o   catch("FLIndex")
+        - method to compute catch using numbers and mean weights at age
 
 BUG FIXES
+
+    o   cor("FLQuant")
+        - by default was using "complete.obs" which when used with "FLCohort" removed all the columns that had one "NA". The proper option is "pairwise.complete.obs" which is now the default. 
+
 UTILITIES
 DOCUMENTATION
 DEPRECATED & DEFUNCT

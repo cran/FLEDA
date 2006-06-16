@@ -3,7 +3,7 @@ if (!isGeneric("cor")) {
 	setGeneric("cor", useAsDefault = cor)
 }
 
-setMethod("cor", signature("FLQuant"), function (x, y="missing", use = "complete.obs", method = "pearson"){
+setMethod("cor", signature("FLQuant"), function (x, y="missing", use = "pairwise.complete.obs", method = "pearson"){
 
 	if(!is.na(pmatch(use, c("complete.obs","pairwise.complete.obs")))){
 		x <- FLCohort(x)
