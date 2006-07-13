@@ -27,7 +27,7 @@ Objects of this classe should be created with a call to the creator function \co
 }}
 
 \section{Methods}{
-Type \code{showMethods(classes="FLCohort", where = "package:FLEDA", showEmprty=FALSE)} at the R prompt for a complete list of methods which are available for this class.
+Type \code{showMethods(classes="FLCohort", where = "package:FLEDA", showEmpty=FALSE)} at the R prompt for a complete list of methods which are available for this class.
 
 \describe{
 \item{as.data.frame}{\code{signature(x = "FLCohort", row.names = "missing", optional = "missing")}: Coerces \code{"FLCohort"} into \code{"data.frames"}.}
@@ -49,5 +49,4 @@ Type \code{showMethods(classes="FLCohort", where = "package:FLEDA", showEmprty=F
 \examples{
 data(ple4)
 flc <- FLCohort(catch.n(ple4))
-plot(flc)
-}
+plot(flc)}
