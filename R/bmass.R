@@ -31,10 +31,11 @@ setMethod("bmass", signature("FLStock"), function(object, ...){
 	ib <- catch.n*catch.wt*(1-mat)
 	ib <- apply(ib, c(2,3,4,5), sum, na.rm=TRUE)
 	ib <- ib/mean(ib)
-		
-#	new("bmass", FLQuants(list(ssb=ssb, ib=ib)))
-	FLQuants(list(mb, ib))
 
+#	new("bmass", FLQuants(mb=mb, ib=ib))
+	flqs <- FLQuants(list(mb, ib))
+	names(flqs) <- c("mb","ib")
+	flqs
 	}
 )
 

@@ -30,7 +30,6 @@ setMethod("spay", signature("FLQuant"), function(object, ...){
 
 # bubbles
 setMethod("bubbles", signature(x="formula", data ="spay"), function(x, data, bub.scale=2.5, bub.col=gray(c(0.1, 0.9)), ...){
-
 	dots <- list(...)
 	data <- as.data.frame(data)
 	# def col to plot negative values
@@ -53,13 +52,13 @@ setMethod("bubbles", signature(x="formula", data ="spay"), function(x, data, bub
 
 	# panel.function
 	dots$panel <- function(x,y,..., cex, subscripts){
-
 		dots <- list(...)
 		dots$pch=19
 		call.list <- dots
 		call.list$x <- x
 		call.list$y <- y
 		call.list$cex = cex[subscripts]
+		call.list$col = dots$col[subscripts]
 
 		ans <- do.call("panel.xyplot", call.list)
 		ans
@@ -73,7 +72,7 @@ setMethod("bubbles", signature(x="formula", data ="spay"), function(x, data, bub
 	# call.list
 	call.list <- c(x = x, dots)
 	# hugly hack to be replaced with the new version of lattice 
-	xyplot <- lattice::xyplot
+#	xyplot <- lattice::xyplot
 
 	# plot
 	ans <- do.call("xyplot", call.list)

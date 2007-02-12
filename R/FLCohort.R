@@ -39,14 +39,18 @@ setMethod("FLCohort", signature("FLQuant"), function(object, ...){
 	}
 
 	# dimensions and co
-	ystart <- as.numeric(dimnames(object)$year[1])
 	dobj <- dim(object)	
+	dsobj <- dims(object) 
 	dflc <- dobj
-	dflc[2] <- sum(dobj[1:2])-1
+	ymin <- dsobj$minyear
+	ymax <- dsobj$maxyear
+	coh.min <- ymin - dsobj$min - dsobj[[1]] + 1
+	coh.max <- ymax - dsobj$min
+	dflc[2] <- length(coh.min:coh.max)
 
 	# creating array flc
 	flc <- array(NA, dim=dflc)
-	coh.name <- ystart+((-dobj[1]+1):(dobj[2]-1))	
+	coh.name <- as.character(coh.min:coh.max)
 	dn.lst <- dimnames(object)
 	dn.lst[[2]] <- coh.name
 	names(dn.lst)[2] <- "cohort"
@@ -219,8 +223,7 @@ setMethod("plot", signature(x="FLCohort"),
 # [
 
 setMethod("[", signature(x="FLCohort"),
-	function(x, i="missing", j="missing", k="missing", l="missing", m="missing",
-		..., drop="missing") {
+	function(x, i, j, k, l, m, ..., drop=FALSE) {
 
 		if (missing(i))
 			i  <-  dimnames(x@.Data)[1][[1]]
@@ -233,19 +236,13 @@ setMethod("[", signature(x="FLCohort"),
 		if (missing(m))
 			m  <-  dimnames(x@.Data)[5][[1]]
 
-   		if (missing(drop)) {
+   		if (drop==FALSE) {
 	  		flc	 <- new("FLCohort", x@.Data[i, j, k, l, m, drop=FALSE])
 			flc@units <- units(x)
 #			quant(flc) <- quant(x)
 		}
-		else if(drop)
+		else if(drop==TRUE)
              flc  <- x@.Data[i, j, k, l, m, ..., drop=TRUE]
-	  	else {
-		 	flc  <- new("FLCohort", x@.Data[i, j, k, l, m, drop=FALSE])
-			flc@units <- units(x)
-#			quant(flc) <- quant(x)
-		}
-
    		return(flc)
 	}
 )   # }}}

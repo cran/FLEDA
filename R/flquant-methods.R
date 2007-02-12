@@ -62,4 +62,20 @@ setMethod("mv0", signature("FLQuant"), function(object, ...){
 	flq
 })
 
+setMethod("mv0", signature("FLQuants"), function(object, ...){
+	lst <- lapply(object, function(x) {
+		arr <- apply(x@.Data, c(2,3,4,5), function(y){
+			c(sum(is.na(y)), sum(y==0, na.rm=TRUE))
+		})
+		dn <- dimnames(x)
+		dn[[1]] <- c("NA","0")
+		names(dn)[1] <- "check"
+		dimnames(arr) <- dn		
+		flq <- FLQuant(arr, dimnames=dn)
+		flq
+	})
+	lst <- FLQuants(lst)
+	names(lst) <- names(object)
+	lst
+})
 

@@ -4,12 +4,13 @@
 \alias{FLCohort}
 \alias{FLCohort-methods}
 \alias{FLCohort,FLQuant-method}
-\alias{as.data.frame,FLCohort-method}
+\alias{as.data.frame,FLCohort,ANY,ANY-method}
 \alias{[,FLCohort-method}
 \alias{quant,FLCohort-method}
 \alias{trim,FLCohort-method}
 \alias{units,FLCohort-method}
 \alias{units<-,FLCohort,character-method}
+\alias{plot,FLCohort,ANY-method}
 
 \title{Class "FLCohort" for information by cohort}
 
@@ -32,6 +33,7 @@ Type \code{showMethods(classes="FLCohort", where = "package:FLEDA", showEmpty=FA
 \describe{
 \item{as.data.frame}{\code{signature(x = "FLCohort", row.names = "missing", optional = "missing")}: Coerces \code{"FLCohort"} into \code{"data.frames"}.}
 \item{\[}{\code{signature(x = "FLCohort")}: Subseting for \code{"FLCohort"}.}
+\item{plot}{\code{signature(x = "FLCohort")}: Default plot.}
 \item{bubbles}{\code{signature(x = "formula", data = "FLCohort")}: Bubbles plots.}
 \item{ccplot}{\code{signature(x = "formula", data = "FLCohort")}: Catch curves plot.}
 \item{flc2flq}{\code{signature(obj = "FLCohort")}: Coerces \code{"FLCohort"} into \code{"FLQUant"}.}

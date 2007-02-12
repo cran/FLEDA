@@ -1,5 +1,7 @@
 importFrom("stats","cor","t.test")
 import("FLCore")
+importFrom("lattice",
+	"splom")
 exportClasses("pay", 
 	"rpay", 
 	"nay",
@@ -33,5 +35,6 @@ exportMethods("bmass",
 	"z", 
 	"summary",
 	"t.test",
+    "units<-",
 	"catch")
 
