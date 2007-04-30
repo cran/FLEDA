@@ -172,19 +172,15 @@ setMethod("quant", signature(object="FLCohort"),
 )
 
 # units
-setMethod("units", signature(object="FLCohort"),
-	function(object)
-		return(object@units)
+setMethod("units", signature(x="FLCohort"),
+	function(x)
+		return(x@units)
 )
 
-setMethod("units<-", signature(object="FLCohort", value="character"),
-	function(object, value) {
-		if (!inherits(object, "FLCohort"))
-			return(object)
-		if (!is(value, "character"))
-			stop("'units' must be a character string")
-		object@units <- value
-		return(object)
+setMethod("units<-", signature(x="FLCohort", value="character"),
+	function(x, value) {
+		x@units <- value
+		return(x)
 	}
 ) # }}}
 
